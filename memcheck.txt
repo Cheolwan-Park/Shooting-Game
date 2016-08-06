@@ -1,0 +1,88 @@
+==12973== Memcheck, a memory error detector
+==12973== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==12973== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==12973== Command: ./test
+==12973== Parent PID: 12837
+==12973== 
+==12973== Conditional jump or move depends on uninitialised value(s)
+==12973==    at 0x53972E7: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x53979E3: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x53980EA: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x536E0EB: SDL_PumpEvents (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x536E128: SDL_PollEvent (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x4025B9: main (test.cpp:25)
+==12973== 
+==12973== Invalid read of size 1
+==12973==    at 0x40A114: decreaseEnermy (CStage.hpp:48)
+==12973==    by 0x40A114: ~CEnermy (CEnermy.cpp:42)
+==12973==    by 0x40A114: CEnermy::~CEnermy() (CEnermy.cpp:44)
+==12973==    by 0x40466E: CObject::~CObject() (CObject.cpp:25)
+==12973==    by 0x40468C: ~CObject (CObject.cpp:33)
+==12973==    by 0x40468C: deleteAllChild (CObject.cpp:81)
+==12973==    by 0x40468C: CObject::~CObject() (CObject.cpp:27)
+==12973==    by 0x4049C8: ~CObject (CObject.cpp:33)
+==12973==    by 0x4049C8: CObject::update(float) (CObject.cpp:91)
+==12973==    by 0x404A2A: CObject::update(float) (CObject.cpp:106)
+==12973==    by 0x404A2A: CObject::update(float) (CObject.cpp:106)
+==12973==    by 0x403BFE: update (CGame.cpp:130)
+==12973==    by 0x403BFE: CGame::run() (CGame.cpp:121)
+==12973==    by 0x4025A9: main (test.cpp:24)
+==12973==  Address 0x148c13b8 is 24 bytes inside a block of size 32 free'd
+==12973==    at 0x4C2F24B: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12973==    by 0x40466E: CObject::~CObject() (CObject.cpp:25)
+==12973==    by 0x4049C8: ~CObject (CObject.cpp:33)
+==12973==    by 0x4049C8: CObject::update(float) (CObject.cpp:91)
+==12973==    by 0x404A2A: CObject::update(float) (CObject.cpp:106)
+==12973==    by 0x404A2A: CObject::update(float) (CObject.cpp:106)
+==12973==    by 0x403BFE: update (CGame.cpp:130)
+==12973==    by 0x403BFE: CGame::run() (CGame.cpp:121)
+==12973==    by 0x4025A9: main (test.cpp:24)
+==12973==  Block was alloc'd at
+==12973==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12973==    by 0x40BCD9: CInvaderGame::setOwner(CObject*) (CInvaderGame.cpp:123)
+==12973==    by 0x402C7F: void CObject::addComponent<CInvaderGame>(CInvaderGame*) (CObject.hpp:54)
+==12973==    by 0x402583: main (test.cpp:19)
+==12973== 
+==12973== 
+==12973== HEAP SUMMARY:
+==12973==     in use at exit: 203,513 bytes in 1,095 blocks
+==12973==   total heap usage: 193,908 allocs, 192,813 frees, 1,361,305,455 bytes allocated
+==12973== 
+==12973== 192 (16 direct, 176 indirect) bytes in 1 blocks are definitely lost in loss record 197 of 243
+==12973==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12973==    by 0x79871FC: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x7987770: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x798904E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x798987B: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x79A665F: _XlcDefaultLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x7990E4D: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x7990F87: _XlcCurrentLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x7990FBD: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x539DAF6: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x539EB71: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x5390405: SDL_VideoInit (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973== 
+==12973== 640 bytes in 1 blocks are definitely lost in loss record 208 of 243
+==12973==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12973==    by 0x7972174: XGetVisualInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==12973==    by 0x4E53EF0: glXChooseVisual (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==12973==    by 0x5399341: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x539E227: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x539E768: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x538F172: SDL_SetVideoMode (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==12973==    by 0x405B94: CRender::init(unsigned int, unsigned int) (CRender.cpp:30)
+==12973==    by 0x403AE9: CGame::init(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int) (CGame.cpp:49)
+==12973==    by 0x4024CE: main (test.cpp:15)
+==12973== 
+==12973== LEAK SUMMARY:
+==12973==    definitely lost: 656 bytes in 2 blocks
+==12973==    indirectly lost: 176 bytes in 4 blocks
+==12973==      possibly lost: 0 bytes in 0 blocks
+==12973==    still reachable: 202,681 bytes in 1,089 blocks
+==12973==         suppressed: 0 bytes in 0 blocks
+==12973== Reachable blocks (those to which a pointer was found) are not shown.
+==12973== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12973== 
+==12973== For counts of detected and suppressed errors, rerun with: -v
+==12973== Use --track-origins=yes to see where uninitialised values come from
+==12973== ERROR SUMMARY: 56 errors from 4 contexts (suppressed: 0 from 0)
